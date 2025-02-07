@@ -87,10 +87,9 @@ $ls -la
 
 #cd .mutt/
 sudo nano muttrc
-source ~/.mutt/mutt_colors
-
 
 cat muttrc
+
 
 sudo nano mutt_colors  
 
