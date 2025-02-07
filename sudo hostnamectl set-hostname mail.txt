@@ -1,53 +1,53 @@
+step 1
+------------------
 sudo hostnamectl set-hostname mail
 bash
 
+setp 2
+------------------
 sudo nano /etc/hosts/
 in file 
-ip  mail.vishal.com mail
+myserverip  mail.vishal.com mail
 
+setp 3 --> run below command to verify hostname and fqdn
+------------------
 hostname 
 hostname --fqdn 
 
-
-smtp server instaaltion
-========================
+setp 4 ->smtp server instaaltion
+------------------
 sudo apt install postfix 
 
-internet site 
+when graphical pop showing then click on internet site 
 
-system mail name dena h 
+then enter your domain  
 mail.vishal.com  ---> vishal.com then ok 
-
 
 sudo systemctl status postfix 
 
 
-mail box folder banao  Maildir is folder ke ander all mail honge 
----------------------
-
+step 5 -> make mailbox configuration for store your mail 
+------------------
 sudo postconf "home_mailbox = Maildir/"
 
 postconf -n
 
-
-
-
+Step 6
 devcost instaaltion devcost provide imap or pop3 jaise services provide karta h jo ki work karnega as mail delivery agent 
 -------------------------------------------------
 
 sudo apt install dovecot-imapd dovecot-pop3d dovecot-core
 
-
 sudo systemctl status dovecot 
 
-->when changes configuration then reaload cmd 
+->when changes configuration then reaload below cmd 
 sudo systemctl reload postfix
 sudo systemctl reload dovecot
 
 
 sudo nano /etc/dovecot/conf.d/10-mail.conf  
 
-in file
+in file 10-mail.conf
 
 comment this line mail_location = mbox:-/mail:INBOX
 
@@ -57,12 +57,11 @@ ctrl + x and y then enter
 
 configuration check 
 --------------------
-
 postconf -n 
 doveconf -n
 
 
-jab bhi koi new user hamre mail server par login kare to har user ke home dir me automatically ek maildir ban jaye uske mail box ki tarh kam karenga  
+->jab bhi koi new user hamre mail server par login kare to har user ke home dir me automatically ek maildir ban jaye uske mail box ki tarh kam karenga  
 
 cd /etc/skel/
 
